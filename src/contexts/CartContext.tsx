@@ -1,4 +1,4 @@
-import {createContext, useContext, useState, type ReactNode, useEffect} from 'react';
+import { createContext, useContext, useState, type ReactNode, useEffect } from 'react';
 import type { Product, CartItem } from '../types';
 
 interface CartContextType {
@@ -20,7 +20,12 @@ interface CartProviderProps {
 export function CartProvider({ children }: CartProviderProps) {
     const [items, setItems] = useState<CartItem[]>(() => {
         const saved = localStorage.getItem('cart');
-        return saved ? JSON.parse(saved) : [];
+        if (!saved) return [];
+        try {
+            return JSON.parse(saved);
+        } catch {
+            return [];
+        }
     });
 
     useEffect(() => {
@@ -60,7 +65,7 @@ export function CartProvider({ children }: CartProviderProps) {
             removeFromCart(id);
             return;
         }
-    
+
         setItems(prevItems =>
             prevItems.map(item =>
                 item.id === id ? { ...item, quantity } : item
@@ -85,7 +90,7 @@ export function CartProvider({ children }: CartProviderProps) {
         totalItems,
     };
 
-    return ( <CartContext.Provider value={value}>{children}</CartContext.Provider>
+    return (<CartContext.Provider value={value}>{children}</CartContext.Provider>
     );
 }
 

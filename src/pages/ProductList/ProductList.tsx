@@ -6,7 +6,7 @@ import styles from './ProductList.module.css'
 import ProductCard from "../../components/ProductCard/ProductCard"
 
 export default function ProductList() {
-    const { filterProducts, products } = useProducts()
+    const { filterProducts } = useProducts()
     const [searchParams] = useSearchParams()
 
     // 필터 상태
@@ -96,8 +96,8 @@ export default function ProductList() {
                 총 {filteredProducts.length}개의 상품
             </p>
 
-            {/* 상품 개수 */}
-            {filterProducts.length > 0 ? (
+            {/* 상품 그리드 */}
+            {filteredProducts.length > 0 ? (
                 <div className={styles.productGrid}>
                     {filteredProducts.map(product => (
                         <ProductCard key={product.id} product={product} />
