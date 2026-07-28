@@ -20,7 +20,12 @@ interface CartProviderProps {
 export function CartProvider({ children }: CartProviderProps) {
     const [items, setItems] = useState<CartItem[]>(() => {
         const saved = localStorage.getItem('cart');
-        return saved ? JSON.parse(saved) : [];
+        if (!saved) return [];
+        try {
+            return JSON.parse(saved);
+        } catch {
+            return [];
+        }
     });
 
     useEffect(() => {
@@ -58,8 +63,9 @@ export function CartProvider({ children }: CartProviderProps) {
     const updateQuantity = (id: number, quantity: number) => {
         if (quantity <= 0) {
             removeFromCart(id);
-        } return;
-    
+            return;
+        }
+
         setItems(prevItems =>
             prevItems.map(item =>
                 item.id === id ? { ...item, quantity } : item

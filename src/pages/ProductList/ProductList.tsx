@@ -6,7 +6,7 @@ import styles from './ProductList.module.css'
 import ProductCard from "../../components/ProductCard/ProductCard"
 
 export default function ProductList() {
-    const { filterProducts, products } = useProducts()
+    const { filterProducts } = useProducts()
     const [searchParams] = useSearchParams()
 
     // 필터 상태
