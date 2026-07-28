@@ -84,8 +84,13 @@
   font-weight: 700;
 }
 
-/* 다크모드 */
-body.dark .header {
+/* 다크모드 - 헤더 배경 변경 */
+:global(body.dark) .header {
   background: #16213e;
   border-bottom: 1px solid #0f3460;
+}
+
+/* 다크모드 - 테마 버튼(해/달) 배경 투명하게 유지 */
+:global(body.dark) .themeButton {
+  background: none; /* 공통 버튼 배경색 무시하고 투명하게 유지 */
 }

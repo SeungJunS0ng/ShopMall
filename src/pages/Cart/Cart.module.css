@@ -1,0 +1,257 @@
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 350px;
+    gap: 40px;
+}
+
+.title {
+    grid-column: 1 / -1;
+    /* 부모 그리드 안에서 한 줄 다 차지. CSS 에서는 시작 인덱스는
+1, 마지막 인덱스는 -1 */
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #2c3e50;
+}
+
+.items {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.item {
+    background: white;
+    padding: 24px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    display: grid;
+    grid-template-columns: 100px 1fr auto auto;
+    gap: 20px;
+    align-items: center;
+}
+
+.imageLink {
+    display: block;
+}
+
+.image {
+    width: 100%;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.name {
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: #2c3e50;
+    text-decoration: none;
+}
+
+.name:hover {
+    color: #667eea;
+}
+
+.options {
+    color: #7f8c8d;
+    font-size: 0.9rem;
+}
+
+.price {
+    font-weight: 600;
+    color: #555;
+}
+
+.quantityControl {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.quantityBtn {
+    width: 32px;
+    height: 32px;
+    border: 2px solid #e0e0e0;
+    background: white;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.quantityBtn:hover:not(:disabled) {
+    border-color: #667eea;
+    color: #667eea;
+}
+
+.quantityBtn:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+}
+
+.quantity {
+    font-weight: 600;
+    min-width: 30px;
+    text-align: center;
+}
+
+.itemTotal {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 10px;
+}
+
+.itemTotalPrice {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #667eea;
+}
+
+.deleteBtn {
+    padding: 6px 12px;
+    background: #e74c3c;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+.deleteBtn:hover {
+    background: #c0392b;
+}
+
+.clearSection {
+    text-align: right;
+    padding: 10px 0;
+}
+
+.clearBtn {
+    padding: 8px 16px;
+    background: #95a5a6;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.clearBtn:hover {
+    background: #7f8c8d;
+}
+
+.summary {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    height: fit-content;
+    position: sticky;
+    top: 100px;
+}
+
+.summaryTitle {
+    font-size: 1.3rem;
+    margin-bottom: 20px;
+    color: #2c3e50;
+}
+
+.summaryRow {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    color: #555;
+}
+
+.divider {
+    height: 1px;
+    background: #e0e0e0;
+    margin: 20px 0;
+}
+
+.total {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.totalPrice {
+    color: #667eea;
+    font-size: 1.5rem;
+}
+
+.notice {
+    margin-top: 15px;
+    text-align: center;
+    color: #7f8c8d;
+    font-size: 0.9rem;
+}
+
+.empty {
+    text-align: center;
+    padding: 100px 20px;
+}
+
+.emptyIcon {
+    font-size: 5rem;
+    margin-bottom: 20px;
+}
+
+.empty h2 {
+    margin-bottom: 10px;
+    color: #2c3e50;
+}
+
+.empty p {
+    margin-bottom: 30px;
+    color: #7f8c8d;
+}
+
+/* 다크모드 */
+body.dark .title,
+body.dark .name,
+body.dark .summaryTitle {
+    color: #eaeaea;
+}
+
+body.dark .item,
+body.dark .summary {
+    background: #16213e;
+}
+
+body.dark .quantityBtn {
+    background: #0f3460;
+    color: #eaeaea;
+    border-color: #0f3460;
+}
+
+@media (max-width: 768px) {
+    .container {
+        grid-template-columns: 1fr;
+    }
+
+    .item {
+        grid-template-columns: 80px 1fr;
+        gap: 15px;
+    }
+
+    .quantityControl,
+    .itemTotal {
+        grid-column: 1 / -1;
+        /* 부모 그리드 안에서 한 줄 다 차지. CSS 에서는 시작 인덱스는
+1, 마지막 인덱스는 -1 */
+    }
+
+    .summary {
+        position: static;
+        /* sticky/absolute/fixed 등을 취소(반응형 아닐 때는 위에 sticky로 되어 있음 */
+    }
+}
