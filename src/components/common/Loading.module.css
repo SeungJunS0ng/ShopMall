@@ -1,0 +1,39 @@
+.loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 80px 20px;
+}
+
+.spinner {
+    width: 50px;
+    height: 50px;
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #667eea;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    /* 아래에 "spin" 애니메이션 정의 */
+    /* 이름 시간 속도 반복 */
+    margin-bottom: 20px;
+}
+
+/* @keyframes = 애니메이션의 "시나리오" */
+/* "spin"이라는 이름의 애니메이션 시나리오 */
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    /* 시작: 0도 */
+    100% {
+        transform: rotate(360deg);
+    }
+
+    /* 끝: 360도 회전 */
+}
+
+.loading p {
+    color: #7f8c8d;
+    font-size: 1.1rem;
+}
